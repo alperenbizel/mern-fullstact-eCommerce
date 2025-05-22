@@ -1,0 +1,168 @@
+:root {
+  --quantum-blue: #4f46e5;
+  --neon-pink: #ec4899;
+  --cyber-lime: #5eff13;
+  --hologram-purple: #a855f7;
+}
+
+.next-gen-container {
+  background: radial-gradient(circle at bottom, #0f172a, #020617);
+  min-height: 300vh;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.quantum-hero {
+  height: 120vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 10%;
+  position: relative;
+}
+
+.dimensional-box {
+  width: 600px;
+  height: 600px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, 
+    rgba(79, 70, 229, 0.2) 0%,
+    rgba(236, 72, 153, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  border: 2px solid var(--quantum-blue);
+  box-shadow: 0 0 50px rgba(79, 70, 229, 0.3);
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, var(--neon-pink), var(--cyber-lime));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  font-size: 5rem;
+}
+
+.fluid-grid-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  padding: 8rem 10%;
+  position: relative;
+}
+
+.fluid-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(79, 70, 229, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer; 
+}
+
+.fluid-card:hover {
+  border-color: var(--quantum-blue);
+  box-shadow: 0 0 15px var(--quantum-blue);
+}
+
+.liquid-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, 
+    rgba(236, 72, 153, 0.15) 0%, 
+    transparent 70%);
+  animation: liquid-flow 15s linear infinite;
+  pointer-events: none; 
+}
+
+@keyframes liquid-flow {
+  from { transform: rotate(0deg) translateX(-50%); }
+  to { transform: rotate(360deg) translateX(-50%); }
+}
+
+.holographic-interface {
+  height: 100vh;
+  position: relative;
+  margin: 10rem 0;
+  background: linear-gradient(45deg, 
+    rgba(168, 85, 247, 0.1) 0%,
+    rgba(79, 70, 229, 0.2) 100%);
+  clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+}
+
+.data-stream {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2rem;
+  padding: 4rem;
+  opacity: 0.3;
+  pointer-events: none; 
+}
+
+.binary-digit {
+  font-family: 'Courier New', monospace;
+  animation: binary-flash 1s infinite;
+  user-select: none; 
+}
+
+@keyframes binary-flash {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.parallax-layer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 200vw;
+  height: 200vh;
+  background: radial-gradient(circle, 
+    rgba(236, 72, 153, 0.05) 0%, 
+    transparent 70%);
+  pointer-events: none;
+  z-index: -1; 
+}
+
+
+.particle-trail {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle closest-side, 
+    var(--neon-pink) 0%,
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.fluid-card:hover .particle-trail {
+  opacity: 0.1;
+}
+
+.typewriter {
+  border-right: 3px solid var(--cyber-lime);
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(40) forwards, blink-caret 0.75s step-end infinite;
+  font-family: monospace;
+  user-select: none;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--cyber-lime); }
+}

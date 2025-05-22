@@ -1,0 +1,37 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Build output
+dist/
+build/
+
+# Env dosyaları
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# MacOS dosyaları
+.DS_Store
+
+# IDE dosyaları
+.vscode/
+.idea/
+
+# Yarn
+yarn-error.log
+
+# npm
+package-lock.json
+
+# Test coverage
+coverage/
+
+# React
+/build

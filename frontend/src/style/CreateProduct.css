@@ -1,0 +1,431 @@
+
+:root {
+    --neon-purple: #9b5af6;
+    --cyber-blue: #00f7ff;
+    --matrix-green: #00ff88;
+    --hologram-bg: rgba(16, 16, 42, 0.95);
+    --cyber-border: 1px solid rgba(155, 90, 246, 0.3);
+    --input-bg: rgba(25, 25, 55, 0.5); 
+    --input-text: #eee; 
+    --input-focus-border: var(--cyber-blue); 
+    --input-label-active: var(--neon-purple); 
+    --input-placeholder: rgba(255, 255, 255, 0.4); 
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  }
+  
+  body {
+    background: radial-gradient(circle at center, #0a0a1a 0%, #000000 100%);
+    min-height: 100vh;
+    color: var(--input-text); 
+  }
+  
+  .cosmic-container {
+    position: relative;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #0a0a1a 0%, #000000 100%);
+    overflow: hidden;
+  }
+  
+  .hologram-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+  
+  .quantum-form {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 3rem;
+    background: var(--hologram-bg);
+    backdrop-filter: blur(10px);
+    border: var(--cyber-border);
+    border-radius: 20px;
+    box-shadow: 0 0 50px rgba(155, 90, 246, 0.2);
+  }
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  .neon-title {
+    font-size: 3rem;
+    background: linear-gradient(45deg, var(--neon-purple), var(--cyber-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(155, 90, 246, 0.4);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    animation: title-glow 2s infinite alternate;
+  }
+  
+  .cyber-line {
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--neon-purple) 50%, transparent 100%);
+    margin: 0 auto;
+    width: 60%;
+    animation: line-scan 3s linear infinite;
+  }
+  
+  .input-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  
+  .input-field {
+    position: relative;
+    background: var(--input-bg); 
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .input-field:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(155, 90, 246, 0.3);
+  }
+  
+  .neon-input,
+  .neon-textarea,
+  .neon-select {
+    position: relative;
+    z-index: 2;
+    background: transparent !important;
+    border: none;
+    outline: none;
+    color: var(--input-text); 
+    font-size: 1rem;
+    width: 100%;
+    padding: 0.75rem 0; 
+  }
+  
+  .neon-textarea {
+    resize: vertical; 
+    min-height: 100px;
+  }
+  
+  .neon-input::placeholder,
+  .neon-textarea::placeholder,
+  .neon-select::placeholder {
+    color: var(--input-placeholder); 
+  }
+  
+  .input-label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--input-placeholder); 
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  
+  .neon-input:focus + .input-label,
+  .neon-input:not(:placeholder-shown) + .input-label,
+  .neon-textarea:focus + .input-label,
+  .neon-textarea:not(:placeholder-shown) + .input-label,
+  .neon-select:focus + .input-label,
+  .neon-select:not(:placeholder-shown) + .input-label {
+    transform: translateY(-25px);
+    font-size: 0.8em;
+    color: var(--input-label-active); 
+  }
+  
+  .neon-select {
+    appearance: none; 
+    padding-right: 2rem; 
+  }
+  
+  .select-wrapper {
+    position: relative;
+  }
+  
+  .select-wrapper::after {
+    content: '\25BC'; /* Aşağı ok ikonu */
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    color: var(--neon-purple);
+    pointer-events: none;
+    font-size: 0.8rem;
+  }
+  
+  .input-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 2px;
+    background: linear-gradient(45deg, var(--neon-purple), var(--cyber-blue));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: border-glow 2s infinite alternate;
+  }
+  
+  .neon-input:focus ~ .input-border,
+  .neon-textarea:focus ~ .input-border,
+  .neon-select:focus ~ .input-border {
+    background: linear-gradient(45deg, var(--cyber-blue), var(--matrix-green)); 
+    animation: border-focus-glow 1.5s infinite alternate;
+  }
+  
+  @keyframes border-focus-glow {
+    0% { opacity: 0.8; }
+    100% { opacity: 1.2; }
+  }
+  
+  .upload-hologram {
+    border: 2px dashed var(--neon-purple);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+    background: rgba(155, 90, 246, 0.05);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .upload-hologram:hover {
+    background: rgba(155, 90, 246, 0.1);
+    transform: scale(1.02);
+  }
+  
+  .upload-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .upload-icon {
+    font-size: 3rem;
+    color: var(--neon-purple);
+    display: block;
+    margin-bottom: 1rem;
+    animation: upload-bounce 2s infinite;
+  }
+  
+  .file-previews {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .file-preview {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    transform: perspective(1000px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+  }
+  
+  .file-preview:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05); 
+  }
+  
+  .file-preview img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+  }
+  
+  .remove-file {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+  
+  .remove-file:hover {
+    background: rgba(255, 0, 0, 0.8);
+    transform: scale(1.1);
+  }
+  
+  .cyber-button {
+    position: relative;
+    background: linear-gradient(45deg, var(--neon-purple), var(--cyber-blue));
+    border: none;
+    padding: 1.5rem 3rem;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+    width: 100%;
+    box-shadow: 0 4px 12px rgba(155, 90, 246, 0.3); 
+  }
+  
+  .cyber-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(155, 90, 246, 0.4);
+  }
+  
+  .glow {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    animation: button-glow 3s infinite linear;
+  }
+  
+  .scanline {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: scanline 1.5s infinite linear;
+  }
+  
+  .status-hologram {
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-weight: bold; 
+  }
+  
+  .status-hologram::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.1) 50%, transparent 60%);
+    animation: status-scan 3s infinite linear;
+  }
+  
+  .status-hologram.success {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid var(--matrix-green);
+    color: var(--matrix-green);
+  }
+  
+  .status-hologram.error {
+    background: rgba(255, 0, 68, 0.1);
+    border: 1px solid #ff0044;
+    color: #ff0044;
+  }
+  
+  @keyframes title-glow {
+    0% {
+      text-shadow: 0 0 30px rgba(155, 90, 246, 0.4);
+    }
+  
+    100% {
+      text-shadow: 0 0 50px rgba(155, 90, 246, 0.6);
+    }
+  }
+  
+  @keyframes line-scan {
+    0% {
+      background-position: -100% 0;
+    }
+  
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  @keyframes border-glow {
+    0% {
+      opacity: 0.6;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes upload-bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+  
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes button-glow {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes scanline {
+    0% {
+      left: -100%;
+    }
+  
+    100% {
+      left: 100%;
+    }
+  }
+  
+  @keyframes status-scan {
+    0% {
+      transform: translateX(-100%);
+    }
+  
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .quantum-form {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+  
+    .neon-title {
+      font-size: 2rem;
+    }
+  
+    .input-grid {
+      grid-template-columns: 1fr;
+    }
+  }

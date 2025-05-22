@@ -1,0 +1,147 @@
+
+.product-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  .product-card h3{
+    color: azure;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+ 
+  .product-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1/1;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover .product-image img {
+    transform: scale(1.05);
+  }
+  
+  .product-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .product-card:hover .product-actions {
+    opacity: 1;
+  }
+  
+  .icon-button {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    padding: 0.8rem;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .icon-button:hover {
+    background: var(--primary);
+    transform: scale(1.1);
+  }
+  
+
+  .product-content {
+    padding: 1.5rem;
+  }
+  
+  .product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .discount-badge {
+    background: #ff4757;
+    color: white;
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .price-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .current-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  
+  .old-price {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;
+    margin-left: 0.5rem;
+  }
+  
+  .detail-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .detail-button:hover {
+    color: var(--primary);
+  }
+  
+
+  .product-card.list {
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .product-card.list .product-image {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+  }
+  
+  .product-card.list .product-description {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 1rem 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .product-card.list {
+      flex-direction: column;
+    }
+    
+    .product-card.list .product-image {
+      width: 100%;
+      height: auto;
+    }
+  }
